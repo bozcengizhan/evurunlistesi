@@ -1,5 +1,7 @@
 package com.bozcengizhan.evurunlistesi
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -12,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,28 +51,26 @@ fun HomeScreen(onLogout: () -> Unit) {
         }
     }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.background(Color(0xFFFFDADA)).fillMaxSize().padding(top = 8.dp).padding(horizontal = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         // Üst Başlık ve Logout Butonu Sabit Kalsın
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.wrapContentSize().background(Color(0xFFFF9F9F), shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = "EV İHTİYAÇ LİSTESİ",
-                style = MaterialTheme.typography.headlineMedium,
+                style = MaterialTheme.typography.displaySmall,
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.weight(0.1f))
+            Spacer(modifier = Modifier.width(4.dp))
             IconButton(onClick = { auth.signOut(); onLogout() }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.Logout,
                     contentDescription = "Çıkış Yap",
-                    tint = MaterialTheme.colorScheme.primary,
+                    tint = Color.White,
                     modifier = Modifier.size(32.dp)
                 )
             }
-            Spacer(modifier = Modifier.weight(1f))
         }
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -89,8 +90,9 @@ fun HomeScreen(onLogout: () -> Unit) {
                         modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
                         placeholder = { Text("Yeni ürün ekle...") },
                         colors = TextFieldDefaults.colors(
-                            focusedContainerColor = MaterialTheme.colorScheme.surface,
-                            unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                            focusedContainerColor = Color.Transparent,
+                            unfocusedContainerColor = Color.Transparent,
+                            disabledContainerColor = Color.Transparent,
                             focusedIndicatorColor = Color.Black,
                             unfocusedIndicatorColor = Color.Black
                         )
@@ -104,7 +106,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                                 itemName = ""
                             }
                         },
-                        modifier = Modifier.padding(start = 8.dp)
+                        modifier = Modifier.padding(start = 4.dp)
                     ) {
                         Text("Ekle", fontSize = 24.sp, color = Color.Black)
                     }
@@ -114,7 +116,7 @@ fun HomeScreen(onLogout: () -> Unit) {
             // Mevcut ürün listesi
             items(itemList) { item ->
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)
+                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp).shadow(8.dp, RoundedCornerShape(16.dp)),
                 ) {
                     Row(
                         modifier = Modifier.padding(16.dp),
@@ -126,7 +128,10 @@ fun HomeScreen(onLogout: () -> Unit) {
                             db.collection("users").document(currentUser!!.uid)
                                 .collection("items").document(item.id).delete()
                         }) {
-                            Icon(Icons.Default.Delete, contentDescription = "Sil", tint = MaterialTheme.colorScheme.error)
+                            Icon(Icons.Default.Delete, contentDescription = "Sil", tint = Color(
+                                0xFFFF8080
+                            )
+                            )
                         }
                     }
                 }
