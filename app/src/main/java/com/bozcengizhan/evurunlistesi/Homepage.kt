@@ -2,6 +2,7 @@ package com.bozcengizhan.evurunlistesi
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
@@ -35,6 +36,14 @@ fun HomeScreen(onLogout: () -> Unit) {
     var itemName by remember { mutableStateOf("") }
     var itemList by remember { mutableStateOf(listOf<ShoppingItem>()) }
 
+    val isDarkTheme = isSystemInDarkTheme()
+
+    val backgroundColor = if (isDarkTheme) Color(0xFFFFD1D1) else Color(0xFFFFD1D1)
+    val topbarColor = if (isDarkTheme) Color(0xFFFF9494) else Color(0xFFFF9494)
+    val cardColor = if (isDarkTheme) Color.White else Color.White
+    val textColor = if (isDarkTheme) Color.Black else Color.Black
+    val iconColor = if (isDarkTheme) Color(0xFFFF8080) else Color(0xFFFF8080)
+
     // Verileri Firestore'dan anlık olarak çekme
     LaunchedEffect(currentUser) {
         currentUser?.let { user ->
@@ -53,10 +62,10 @@ fun HomeScreen(onLogout: () -> Unit) {
         }
     }
 
-    Column(modifier = Modifier.background(Color(0xFFFFDADA)).fillMaxSize().padding(top = 16.dp).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.background(backgroundColor).fillMaxSize().padding(top = 16.dp).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         // Üst Başlık ve Logout Butonu Sabit Kalsın
         Row(
-            modifier = Modifier.fillMaxWidth().background(Color(0xFFFF9F9F), shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
+            modifier = Modifier.fillMaxWidth().background(topbarColor, shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -124,18 +133,16 @@ fun HomeScreen(onLogout: () -> Unit) {
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),
                 ) {
                     Row(
-                        modifier = Modifier.padding(8.dp),
+                        modifier = Modifier.background(cardColor, shape = RoundedCornerShape(16.dp)).padding(8.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(text = item.name, modifier = Modifier.weight(1f))
+                        Text(text = item.name, modifier = Modifier.weight(1f), color = textColor)
                         IconButton(onClick = {
                             db.collection("users").document(currentUser!!.uid)
                                 .collection("items").document(item.id).delete()
                         }) {
-                            Icon(Icons.Default.Delete, contentDescription = "Sil", tint = Color(
-                                0xFFFF8080
-                            )
+                            Icon(Icons.Default.Delete, contentDescription = "Sil", tint = iconColor
                             )
                         }
                     }

@@ -2,6 +2,7 @@ package com.bozcengizhan.evurunlistesi
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
@@ -18,9 +19,15 @@ import androidx.compose.ui.unit.sp
 fun LoginScreen(
     onSignInClick: () -> Unit
 ) {
+    val isDarkTheme = isSystemInDarkTheme()
+
+    val backgroundColor = if (isDarkTheme) Color(0xFFFFD1D1) else Color(0xFFFFD1D1)
+    val cardColor = if (isDarkTheme) Color(0xFFFF9494) else Color(0xFFFF9494)
+    val textColor = if (isDarkTheme) Color.White else Color.White
+
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = Color(0xFFFFD1D1) // Ana pastel pembe
+        color = backgroundColor // Ana pastel pembe
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
 
@@ -43,7 +50,7 @@ fun LoginScreen(
                     Card(
                         modifier = Modifier.size(100.dp),
                         shape = RoundedCornerShape(24.dp),
-                        colors = CardDefaults.cardColors(containerColor = Color(0xFFFF9494)),
+                        colors = CardDefaults.cardColors(containerColor = cardColor),
                         border = BorderStroke(3.dp, Color.Black),
                         elevation = CardDefaults.cardElevation(12.dp)
                     ) {
@@ -103,7 +110,7 @@ fun LoginScreen(
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 // Buraya istersen bir Google ikonu da ekleyebilirsin
-                                Text("Continue with Google", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                                Text("Continue with Google", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = textColor)
                             }
                         }
                     }
