@@ -14,7 +14,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onLogout: () -> Unit) {
     val auth = Firebase.auth
     val db = Firebase.firestore
     val currentUser = auth.currentUser
@@ -42,7 +42,7 @@ fun HomeScreen() {
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
         Text(
-            text = "Hoş geldin, ${currentUser?.displayName}",
+            text = "EV İHTİYAÇ LİSTESİ",
             style = MaterialTheme.typography.titleMedium
         )
 
@@ -102,7 +102,13 @@ fun HomeScreen() {
         }
 
         // Çıkış Yap Butonu
-        TextButton(onClick = { auth.signOut() }, modifier = Modifier.fillMaxWidth()) {
+        TextButton(
+            onClick = {
+                auth.signOut()
+                onLogout() // Burayı çağırmayı unutma
+            },
+            modifier = Modifier.fillMaxWidth()
+        ) {
             Text("Çıkış Yap")
         }
     }

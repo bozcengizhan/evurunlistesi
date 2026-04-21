@@ -73,7 +73,6 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
                         if (currentUser == null) {
-                            // DOLDURULAN KISIM BURASI:
                             LoginScreen(
                                 onSignInClick = {
                                     val signInIntent = googleSignInClient.signInIntent
@@ -85,7 +84,12 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier.fillMaxSize(),
                                 color = MaterialTheme.colorScheme.background
                             ) {
-                                HomeScreen()
+                                // HATA VEREN KISIM BURASIYDI, ŞÖYLE DÜZELT:
+                                HomeScreen(onLogout = {
+                                    googleSignInClient.signOut().addOnCompleteListener {
+                                        // Google oturumu da temizlendi
+                                    }
+                                })
                             }
                         }
                     }
