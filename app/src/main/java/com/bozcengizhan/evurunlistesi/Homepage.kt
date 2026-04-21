@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.time.format.TextStyle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -102,13 +103,22 @@ fun HomeScreen(onLogout: () -> Unit) {
                         value = itemName,
                         onValueChange = { itemName = it },
                         modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
-                        placeholder = { Text("Yeni ürün ekle...") },
+                        textStyle = LocalTextStyle.current.copy(
+                            fontSize = 20.sp, // İstediğin boyuta çekebilirsin
+                            fontWeight = FontWeight.Medium // İstersen biraz daha kalın yapabilirsin
+                        ),
+                        placeholder = { Text("Yeni ürün ekle...", fontSize = 18.sp) },
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.Transparent,
                             unfocusedContainerColor = Color.Transparent,
                             disabledContainerColor = Color.Transparent,
                             focusedIndicatorColor = Color.Black,
-                            unfocusedIndicatorColor = Color.Black
+                            unfocusedIndicatorColor = Color.Black,
+                            focusedPlaceholderColor = Color.Black.copy(alpha = 0.4f),
+                            unfocusedPlaceholderColor = Color.Black.copy(alpha = 0.2f),
+                            cursorColor = Color.Black,
+                            focusedTextColor = Color.Black.copy(alpha = 2f),
+                            unfocusedTextColor = Color.Black
                         )
                     )
                     TextButton(
