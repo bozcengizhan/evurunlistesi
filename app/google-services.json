@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "420012590198",
+    "project_id": "evurunlistesi-5a952",
+    "storage_bucket": "evurunlistesi-5a952.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:420012590198:android:6c8374d881bf365ee34b57",
+        "android_client_info": {
+          "package_name": "com.bozcengizhan.evurunlistesi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "420012590198-q8r51hjhmo08ti14oi8esjl88g1c438d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmO9ynWcyOOwE28tEzGGNYEsJeXGtbzIE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "420012590198-q8r51hjhmo08ti14oi8esjl88g1c438d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
