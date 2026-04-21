@@ -4,10 +4,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
@@ -40,11 +43,31 @@ fun HomeScreen(onLogout: () -> Unit) {
         }
     }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
-        Text(
-            text = "EV İHTİYAÇ LİSTESİ",
-            style = MaterialTheme.typography.titleMedium
-        )
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+        Row(modifier = Modifier.fillMaxWidth()) {
+            Spacer(modifier = Modifier.weight(1f))
+
+            Text(text = "EV İHTİYAÇ LİSTESİ", style = MaterialTheme.typography.headlineMedium)
+
+            Spacer(modifier = Modifier.weight(0.01f))
+
+            IconButton(
+                onClick = {
+                    auth.signOut()
+                    onLogout()
+                },
+                modifier = Modifier.align(Alignment.Top)
+            ) {
+                // İkonu ekrana basan asıl bileşen budur:
+                Icon(
+                    imageVector = Icons.Default.AccountBox,
+                    contentDescription = "Çıkış Yap",
+                    tint = MaterialTheme.colorScheme.primary // Görünür olması için renk verdik
+                )
+            }
+
+            Spacer(modifier = Modifier.weight(0.9f))
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -99,17 +122,6 @@ fun HomeScreen(onLogout: () -> Unit) {
                     }
                 }
             }
-        }
-
-        // Çıkış Yap Butonu
-        TextButton(
-            onClick = {
-                auth.signOut()
-                onLogout() // Burayı çağırmayı unutma
-            },
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Text("Çıkış Yap")
         }
     }
 }
