@@ -3,7 +3,9 @@ package com.bozcengizhan.evurunlistesi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
@@ -12,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -44,53 +47,64 @@ fun HomeScreen(onLogout: () -> Unit) {
     }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        Row(modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            // Bu satır Row içindeki her şeyi dikeyde tam merkeze hizalar
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Sol tarafı boşlukla doldurarak başlığı merkeze itiyoruz
             Spacer(modifier = Modifier.weight(1f))
 
-            Text(text = "EV İHTİYAÇ LİSTESİ", style = MaterialTheme.typography.headlineMedium)
+            Text(
+                text = "EV İHTİYAÇ LİSTESİ",
+                style = MaterialTheme.typography.headlineMedium,
+                textAlign = TextAlign.Center
+            )
 
-            Spacer(modifier = Modifier.weight(0.01f))
+            // Başlık ile İkon arasına esnek bir boşluk koyuyoruz
+            // Böylece ikon en sağa yaslanacak
+            Spacer(modifier = Modifier.weight(0.1f))
 
             IconButton(
                 onClick = {
                     auth.signOut()
                     onLogout()
-                },
-                modifier = Modifier.align(Alignment.Top)
+                }
             ) {
-                // İkonu ekrana basan asıl bileşen budur:
                 Icon(
-                    imageVector = Icons.Default.AccountBox,
+                    imageVector = Icons.AutoMirrored.Filled.Logout,
                     contentDescription = "Çıkış Yap",
-                    tint = MaterialTheme.colorScheme.primary // Görünür olması için renk verdik
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier.size(32.dp) // İkon boyutunu yazıya göre biraz büyütebilirsin
                 )
             }
 
-            Spacer(modifier = Modifier.weight(0.9f))
+            Spacer(modifier = Modifier.weight(1f))
         }
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(32.dp))
 
         // Ürün Ekleme Alanı
         Row(modifier = Modifier.fillMaxWidth()) {
             TextField(
+                shape = RoundedCornerShape(10.dp),
                 value = itemName,
                 onValueChange = { itemName = it },
                 modifier = Modifier.weight(1f),
                 placeholder = { Text("Yeni ürün ekle...") }
             )
-            Button(
+            TextButton(
                 onClick = {
-                    if (itemName.isNotBlank()) {
-                        val newItem = hashMapOf("name" to itemName, "isBought" to false)
-                        db.collection("users").document(currentUser!!.uid).collection("items")
-                            .add(newItem)
-                        itemName = ""
-                    }
-                },
+                if (itemName.isNotBlank()) {
+                    val newItem = hashMapOf("name" to itemName, "isBought" to false)
+                    db.collection("users").document(currentUser!!.uid).collection("items")
+                        .add(newItem)
+                    itemName = ""
+                }
+            },
                 modifier = Modifier.padding(start = 8.dp)
             ) {
-                Text("Ekle")
+                Text("Ekle", fontSize = 24.sp)
             }
         }
 
@@ -104,7 +118,8 @@ fun HomeScreen(onLogout: () -> Unit) {
                 ) {
                     Row(
                         modifier = Modifier.padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(text = item.name, modifier = Modifier.weight(1f))
 

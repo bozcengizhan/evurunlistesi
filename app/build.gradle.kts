@@ -73,4 +73,6 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("com.google.firebase:firebase-firestore-ktx")
 
+    implementation("androidx.compose.material:material-icons-extended")
+
 }
