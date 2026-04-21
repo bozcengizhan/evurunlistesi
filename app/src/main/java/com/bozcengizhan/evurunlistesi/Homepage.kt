@@ -90,8 +90,14 @@ fun HomeScreen(onLogout: () -> Unit) {
                 shape = RoundedCornerShape(10.dp),
                 value = itemName,
                 onValueChange = { itemName = it },
-                modifier = Modifier.weight(1f),
-                placeholder = { Text("Yeni ürün ekle...") }
+                modifier = Modifier.weight(1f).padding(horizontal = 16.dp),
+                placeholder = { Text("Yeni ürün ekle...") },
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = MaterialTheme.colorScheme.surface,
+                    unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                    disabledContainerColor = MaterialTheme.colorScheme.surface,
+
+                )
             )
             TextButton(
                 onClick = {
