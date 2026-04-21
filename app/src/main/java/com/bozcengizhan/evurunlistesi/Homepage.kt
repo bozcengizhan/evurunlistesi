@@ -23,6 +23,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.time.format.TextStyle
@@ -45,10 +47,10 @@ fun HomeScreen(onLogout: () -> Unit) {
     val textColor = if (isDarkTheme) Color.Black else Color.Black
     val iconColor = if (isDarkTheme) Color(0xFFFF8080) else Color(0xFFFF8080)
 
-    // Verileri Firestore'dan anlık olarak çekme
     LaunchedEffect(currentUser) {
         currentUser?.let { user ->
             db.collection("users").document(user.uid).collection("items")
+                .orderBy("timestamp", Query.Direction.DESCENDING) // En yeni en üstte
                 .addSnapshotListener { snapshot, _ ->
                     if (snapshot != null) {
                         itemList = snapshot.documents.map { doc ->
@@ -104,10 +106,10 @@ fun HomeScreen(onLogout: () -> Unit) {
                         onValueChange = { itemName = it },
                         modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
                         textStyle = LocalTextStyle.current.copy(
-                            fontSize = 20.sp, // İstediğin boyuta çekebilirsin
+                            fontSize = 22.sp, // İstediğin boyuta çekebilirsin
                             fontWeight = FontWeight.Medium // İstersen biraz daha kalın yapabilirsin
                         ),
-                        placeholder = { Text("Yeni ürün ekle...", fontSize = 18.sp) },
+                        placeholder = { Text("Yeni ürün ekle...", fontSize = 20.sp) },
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.Transparent,
                             unfocusedContainerColor = Color.Transparent,
@@ -124,7 +126,11 @@ fun HomeScreen(onLogout: () -> Unit) {
                     TextButton(
                         onClick = {
                             if (itemName.isNotBlank()) {
-                                val newItem = hashMapOf("name" to itemName, "isBought" to false)
+                                val newItem = hashMapOf(
+                                    "name" to itemName,
+                                    "isBought" to false,
+                                    "timestamp" to FieldValue.serverTimestamp() // Sıralama için zaman damgası
+                                )
                                 db.collection("users").document(currentUser!!.uid).collection("items")
                                     .add(newItem)
                                 itemName = ""
@@ -147,7 +153,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(text = item.name, modifier = Modifier.weight(1f), color = textColor)
+                        Text(text = item.name, modifier = Modifier.weight(1f), color = textColor, fontSize = 18.sp)
                         IconButton(onClick = {
                             db.collection("users").document(currentUser!!.uid)
                                 .collection("items").document(item.id).delete()
