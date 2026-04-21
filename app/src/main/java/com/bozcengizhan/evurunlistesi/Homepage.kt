@@ -3,6 +3,7 @@ package com.bozcengizhan.evurunlistesi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -51,29 +53,32 @@ fun HomeScreen(onLogout: () -> Unit) {
         }
     }
 
-    Column(modifier = Modifier.background(Color(0xFFFFDADA)).fillMaxSize().padding(top = 8.dp).padding(horizontal = 8.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.background(Color(0xFFFFDADA)).fillMaxSize().padding(top = 16.dp).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         // Üst Başlık ve Logout Butonu Sabit Kalsın
         Row(
-            modifier = Modifier.wrapContentSize().background(Color(0xFFFF9F9F), shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
-            verticalAlignment = Alignment.CenterVertically
+            modifier = Modifier.fillMaxWidth().background(Color(0xFFFF9F9F), shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
+            Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = "EV İHTİYAÇ LİSTESİ",
-                style = MaterialTheme.typography.displaySmall,
-                textAlign = TextAlign.Center
+                text = "STACK",
+                style = MaterialTheme.typography.displayMedium,
+                fontWeight = FontWeight.Black,
+                letterSpacing = 6.sp,
+                color = Color.White
             )
-            Spacer(modifier = Modifier.width(4.dp))
+            Spacer(modifier = Modifier.weight(0.25f))
             IconButton(onClick = { auth.signOut(); onLogout() }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.Logout,
                     contentDescription = "Çıkış Yap",
-                    tint = Color.White,
+                    tint = Color.Black,
                     modifier = Modifier.size(32.dp)
                 )
             }
+            Spacer(modifier = Modifier.weight(0.4f))
         }
-
-        Spacer(modifier = Modifier.height(8.dp))
 
         // Liste Alanı
         LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -116,10 +121,10 @@ fun HomeScreen(onLogout: () -> Unit) {
             // Mevcut ürün listesi
             items(itemList) { item ->
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp).shadow(8.dp, RoundedCornerShape(16.dp)),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),
                 ) {
                     Row(
-                        modifier = Modifier.padding(16.dp),
+                        modifier = Modifier.padding(8.dp),
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
