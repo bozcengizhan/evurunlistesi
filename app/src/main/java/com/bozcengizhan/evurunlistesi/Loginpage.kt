@@ -27,7 +27,7 @@ fun LoginScreen(
 
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = backgroundColor // Ana pastel pembe
+        color = backgroundColor
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
 
