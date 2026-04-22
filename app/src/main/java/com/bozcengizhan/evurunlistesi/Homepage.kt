@@ -66,7 +66,6 @@ fun HomeScreen(onLogout: () -> Unit) {
     }
 
     Column(modifier = Modifier.background(backgroundColor).fillMaxSize().padding(top = 32.dp).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-        // Üst Başlık ve Logout Butonu Sabit Kalsın
         Row(
             modifier = Modifier.fillMaxWidth().background(topbarColor, shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
             verticalAlignment = Alignment.CenterVertically,
@@ -92,13 +91,11 @@ fun HomeScreen(onLogout: () -> Unit) {
             Spacer(modifier = Modifier.weight(0.4f))
         }
 
-        // Liste Alanı
         LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-            // --- DEĞİŞİKLİK BURADA: Ekleme alanını listenin ilk öğesi yapıyoruz ---
             item {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp), // Altına boşluk ekledik
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     TextField(
@@ -106,8 +103,8 @@ fun HomeScreen(onLogout: () -> Unit) {
                         onValueChange = { itemName = it },
                         modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
                         textStyle = LocalTextStyle.current.copy(
-                            fontSize = 22.sp, // İstediğin boyuta çekebilirsin
-                            fontWeight = FontWeight.Medium // İstersen biraz daha kalın yapabilirsin
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Medium
                         ),
                         placeholder = { Text("Yeni ürün ekle...", fontSize = 20.sp) },
                         colors = TextFieldDefaults.colors(
@@ -129,7 +126,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                                 val newItem = hashMapOf(
                                     "name" to itemName,
                                     "isBought" to false,
-                                    "timestamp" to FieldValue.serverTimestamp() // Sıralama için zaman damgası
+                                    "timestamp" to FieldValue.serverTimestamp()
                                 )
                                 db.collection("users").document(currentUser!!.uid).collection("items")
                                     .add(newItem)
@@ -143,7 +140,6 @@ fun HomeScreen(onLogout: () -> Unit) {
                 }
             }
 
-            // Mevcut ürün listesi
             items(itemList) { item ->
                 Card(
                     modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),

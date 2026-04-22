@@ -31,8 +31,6 @@ fun LoginScreen(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
 
-            // Arka plana derinlik katmak için dekoratif bir daire (İsteğe bağlı)
-            // Tasarımı daha "Premium" gösterir
             Canvas(modifier = Modifier.size(300.dp).align(Alignment.TopStart).offset(x = (-100).dp, y = (-50).dp)) {
                 drawCircle(color = Color(0xFFFF9494).copy(alpha = 0.4f))
             }
@@ -44,9 +42,7 @@ fun LoginScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceAround
             ) {
-                // 1. Görsel Alan (Logo ve Slogan)
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    // Modern bir ikon tasarımı: Üst üste binmiş kartlar efekti
                     Card(
                         modifier = Modifier.size(100.dp),
                         shape = RoundedCornerShape(24.dp),
@@ -77,7 +73,6 @@ fun LoginScreen(
                     )
                 }
 
-                // 2. Giriş Alanı (Daha şık bir buton tasarımı)
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -109,14 +104,12 @@ fun LoginScreen(
                             elevation = ButtonDefaults.buttonElevation(8.dp)
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                // Buraya istersen bir Google ikonu da ekleyebilirsin
                                 Text("Continue with Google", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = textColor)
                             }
                         }
                     }
                 }
 
-                // 3. Alt Bilgi
                 Text(
                     text = "By continuing, you agree to our Terms.",
                     fontSize = 11.sp,
