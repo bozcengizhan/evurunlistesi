@@ -65,7 +65,7 @@ fun HomeScreen(onLogout: () -> Unit) {
         }
     }
 
-    Column(modifier = Modifier.background(backgroundColor).fillMaxSize().padding(top = 16.dp).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.background(backgroundColor).fillMaxSize().padding(top = 32.dp).padding(horizontal = 16.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         // Üst Başlık ve Logout Butonu Sabit Kalsın
         Row(
             modifier = Modifier.fillMaxWidth().background(topbarColor, shape = RoundedCornerShape(8.dp)).border(3.dp, Color.Black, shape = RoundedCornerShape(8.dp)).padding(8.dp),
