@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // 1. Google Giriş Ayarları
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("420012590198-q8r51hjhmo08ti14oi8esjl88g1c438d.apps.googleusercontent.com")
             .requestEmail()
@@ -40,7 +39,6 @@ class MainActivity : ComponentActivity() {
                 val auth = FirebaseAuth.getInstance()
                 var currentUser by remember { mutableStateOf(auth.currentUser) }
 
-                // Kullanıcı oturum durumunu takip eder
                 DisposableEffect(Unit) {
                     val listener = FirebaseAuth.AuthStateListener { firebaseAuth ->
                         currentUser = firebaseAuth.currentUser
@@ -49,7 +47,6 @@ class MainActivity : ComponentActivity() {
                     onDispose { auth.removeAuthStateListener(listener) }
                 }
 
-                // 2. Google Seçim Ekranını Başlatan Launcher
                 val launcher = rememberLauncherForActivityResult(
                     contract = ActivityResultContracts.StartActivityForResult()
                 ) { result ->
@@ -60,7 +57,6 @@ class MainActivity : ComponentActivity() {
 
                         auth.signInWithCredential(credential).addOnCompleteListener { taskResult ->
                             if (taskResult.isSuccessful) {
-                                // BURAYI EKLE: State'i manuel güncelle ki sayfa anında değişsin
                                 currentUser = auth.currentUser
                                 println("Giriş Başarılı: ${auth.currentUser?.displayName}")
                             }
@@ -84,10 +80,8 @@ class MainActivity : ComponentActivity() {
                                 modifier = Modifier.fillMaxSize(),
                                 color = MaterialTheme.colorScheme.background
                             ) {
-                                // HATA VEREN KISIM BURASIYDI, ŞÖYLE DÜZELT:
                                 HomeScreen(onLogout = {
                                     googleSignInClient.signOut().addOnCompleteListener {
-                                        // Google oturumu da temizlendi
                                     }
                                 })
                             }
