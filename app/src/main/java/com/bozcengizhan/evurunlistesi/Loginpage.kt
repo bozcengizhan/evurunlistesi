@@ -139,11 +139,11 @@ fun LoginScreen(
                 AndroidView(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(50.dp), // Standart banner yüksekliği 50dp'dir
+                        .height(50.dp),
                     factory = { context ->
                         AdView(context).apply {
                             setAdSize(AdSize.BANNER)
-                            adUnitId = "ca-app-pub-3940256099942544/6300978111" // TEST ID
+                            adUnitId = "ca-app-pub-3048251460083679/8505568797"
                             loadAd(AdRequest.Builder().build())
                         }
                     }
