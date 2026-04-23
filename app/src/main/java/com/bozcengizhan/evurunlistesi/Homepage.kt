@@ -91,7 +91,6 @@ fun HomeScreen(onLogout: () -> Unit) {
                     modifier = Modifier.size(32.dp)
                 )
             }
-            Spacer(modifier = Modifier.weight(0.4f))
         }
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
