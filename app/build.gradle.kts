@@ -74,5 +74,5 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx")
 
     implementation("androidx.compose.material:material-icons-extended")
-
+    implementation("com.google.android.gms:play-services-ads:23.0.0")
 }

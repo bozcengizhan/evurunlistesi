@@ -16,6 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.bozcengizhan.evurunlistesi.R
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 
 @Composable
 fun LoginScreen(
@@ -37,6 +41,7 @@ fun LoginScreen(
                 drawCircle(color = Color(0xFFFF9494).copy(alpha = 0.4f))
             }
 
+
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -44,6 +49,9 @@ fun LoginScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceAround
             ) {
+
+                Spacer(modifier = Modifier.weight(0.1f))
+
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Card(
                         modifier = Modifier.size(100.dp),
@@ -74,6 +82,8 @@ fun LoginScreen(
                         fontWeight = FontWeight.Medium
                     )
                 }
+
+                Spacer(modifier = Modifier.weight(0.2f))
 
                 Card(
                     modifier = Modifier
@@ -109,15 +119,36 @@ fun LoginScreen(
                                 Text(text = stringResource(R.string.login_google_button), fontWeight = FontWeight.Bold, fontSize = 16.sp, color = textColor)
                             }
                         }
+
+                        Spacer(modifier = Modifier.height(16.dp))
+
+                        Text(
+                            text = stringResource(R.string.login_terms),
+                            fontSize = 11.sp,
+                            color = Color.Black.copy(alpha = 0.4f),
+                            textAlign = TextAlign.Center
+                        )
+
                     }
                 }
 
-                Text(
-                    text = stringResource(R.string.login_terms),
-                    fontSize = 11.sp,
-                    color = Color.Black.copy(alpha = 0.4f),
-                    textAlign = TextAlign.Center
+
+
+                Spacer(modifier = Modifier.weight(0.3f))
+
+                AndroidView(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp), // Standart banner yüksekliği 50dp'dir
+                    factory = { context ->
+                        AdView(context).apply {
+                            setAdSize(AdSize.BANNER)
+                            adUnitId = "ca-app-pub-3940256099942544/6300978111" // TEST ID
+                            loadAd(AdRequest.Builder().build())
+                        }
+                    }
                 )
+
             }
         }
     }
