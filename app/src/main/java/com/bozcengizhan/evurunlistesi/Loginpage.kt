@@ -14,6 +14,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.bozcengizhan.evurunlistesi.R
+import androidx.compose.ui.res.stringResource
 
 @Composable
 fun LoginScreen(
@@ -58,7 +60,7 @@ fun LoginScreen(
                     Spacer(modifier = Modifier.height(24.dp))
 
                     Text(
-                        text = "STACK",
+                        text = stringResource(R.string.app_name),
                         style = MaterialTheme.typography.displayMedium,
                         fontWeight = FontWeight.Black,
                         letterSpacing = 6.sp,
@@ -66,7 +68,7 @@ fun LoginScreen(
                     )
 
                     Text(
-                        text = "Organize your life, beautifully.",
+                        text = stringResource(R.string.login_slogan),
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color.Black.copy(alpha = 0.6f),
                         fontWeight = FontWeight.Medium
@@ -87,7 +89,7 @@ fun LoginScreen(
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            "Welcome Back!",
+                            text = stringResource(R.string.login_welcome),
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp,
                             color = Color.Black
@@ -104,14 +106,14 @@ fun LoginScreen(
                             elevation = ButtonDefaults.buttonElevation(8.dp)
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text("Continue with Google", fontWeight = FontWeight.Bold, fontSize = 16.sp, color = textColor)
+                                Text(text = stringResource(R.string.login_google_button), fontWeight = FontWeight.Bold, fontSize = 16.sp, color = textColor)
                             }
                         }
                     }
                 }
 
                 Text(
-                    text = "By continuing, you agree to our Terms.",
+                    text = stringResource(R.string.login_terms),
                     fontSize = 11.sp,
                     color = Color.Black.copy(alpha = 0.4f),
                     textAlign = TextAlign.Center

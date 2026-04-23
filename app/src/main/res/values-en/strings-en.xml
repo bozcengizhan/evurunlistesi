@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">STACK</string>
+    <string name="login_slogan">Organize your life, beautifully.</string>
+    <string name="login_welcome">Welcome Back!</string>
+    <string name="login_google_button">Continue with Google</string>
+    <string name="login_terms">By continuing, you agree to our Terms.</string>
+
+    <string name="home_add_placeholder">Add new item...</string>
+    <string name="home_add_button">Add</string>
+    <string name="home_logout_description">Logout</string>
+    <string name="home_delete_description">Delete</string>
+</resources>

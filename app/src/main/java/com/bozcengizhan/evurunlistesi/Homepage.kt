@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -28,6 +29,8 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.time.format.TextStyle
+import androidx.compose.ui.res.stringResource
+import com.bozcengizhan.evurunlistesi.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -73,7 +76,7 @@ fun HomeScreen(onLogout: () -> Unit) {
         ) {
             Spacer(modifier = Modifier.weight(1f))
             Text(
-                text = "STACK",
+                text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Black,
                 letterSpacing = 6.sp,
@@ -83,7 +86,7 @@ fun HomeScreen(onLogout: () -> Unit) {
             IconButton(onClick = { auth.signOut(); onLogout() }) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.Logout,
-                    contentDescription = "Çıkış Yap",
+                    contentDescription = stringResource(R.string.home_logout_description),
                     tint = Color.Black,
                     modifier = Modifier.size(32.dp)
                 )
@@ -106,7 +109,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                             fontSize = 22.sp,
                             fontWeight = FontWeight.Medium
                         ),
-                        placeholder = { Text("Yeni ürün ekle...", fontSize = 20.sp) },
+                        placeholder = { Text(stringResource(R.string.home_add_placeholder), fontSize = 20.sp) },
                         colors = TextFieldDefaults.colors(
                             focusedContainerColor = Color.Transparent,
                             unfocusedContainerColor = Color.Transparent,
@@ -135,7 +138,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                         },
                         modifier = Modifier.padding(start = 4.dp)
                     ) {
-                        Text("Ekle", fontSize = 24.sp, color = Color.Black)
+                        Text(stringResource(R.string.home_add_button), fontSize = 24.sp, color = Color.Black)
                     }
                 }
             }
@@ -154,7 +157,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                             db.collection("users").document(currentUser!!.uid)
                                 .collection("items").document(item.id).delete()
                         }) {
-                            Icon(Icons.Default.Delete, contentDescription = "Sil", tint = iconColor
+                            Icon(Icons.Default.Delete, contentDescription = stringResource(R.string.home_delete_description), tint = iconColor
                             )
                         }
                     }

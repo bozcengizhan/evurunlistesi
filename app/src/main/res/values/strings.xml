@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">evurunlistesi</string>
+    <string name="app_name">STACK</string>
+    <string name="login_slogan">Hayatınızı şık bir şekilde düzenleyin.</string>
+    <string name="login_welcome">Tekrar Hoş Geldiniz!</string>
+    <string name="login_google_button">Google ile Devam Et</string>
+    <string name="login_terms">Devam ederek kullanım koşullarını kabul etmiş olursunuz.</string>
+
+    <string name="home_add_placeholder">Yeni ürün ekle...</string>
+    <string name="home_add_button">Ekle</string>
+    <string name="home_logout_description">Çıkış Yap</string>
+    <string name="home_delete_description">Sil</string>
 </resources>

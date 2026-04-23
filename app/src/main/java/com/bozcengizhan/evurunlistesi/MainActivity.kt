@@ -21,6 +21,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,22 +70,46 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        if (currentUser == null) {
-                            LoginScreen(
-                                onSignInClick = {
-                                    val signInIntent = googleSignInClient.signInIntent
-                                    launcher.launch(signInIntent)
+                        // AnimatedContent, currentUser değiştiğinde geçişi otomatik animasyonlu yapar
+                        AnimatedContent(
+                            targetState = currentUser,
+                            transitionSpec = {
+                                // Giriş mi yapıyoruz (null -> user) yoksa çıkış mı (user -> null)?
+                                if (targetState != null) {
+                                    // GİRİŞ: Aşağıdan yukarı süzülerek gel
+                                    (slideInVertically(animationSpec = tween(600), initialOffsetY = { it }) +
+                                            fadeIn(animationSpec = tween(600)))
+                                        .togetherWith(fadeOut(animationSpec = tween(400)))
+                                } else {
+                                    // ÇIKIŞ: Yukarıdan aşağıya süzülerek git
+                                    fadeIn(animationSpec = tween(500)) // Yeni ekran (Login) yavaşça belirsin
+                                        .togetherWith(
+                                            slideOutVertically(animationSpec = tween(600), targetOffsetY = { it }) +
+                                                    fadeOut(animationSpec = tween(600))
+                                        )
                                 }
-                            )
-                        } else {
-                            Surface(
-                                modifier = Modifier.fillMaxSize(),
-                                color = MaterialTheme.colorScheme.background
-                            ) {
-                                HomeScreen(onLogout = {
-                                    googleSignInClient.signOut().addOnCompleteListener {
+                            },
+                            label = "ScreenTransition"
+                        ) { targetUser ->
+                            if (targetUser == null) {
+                                LoginScreen(
+                                    onSignInClick = {
+                                        val signInIntent = googleSignInClient.signInIntent
+                                        launcher.launch(signInIntent)
                                     }
-                                })
+                                )
+                            } else {
+                                Surface(
+                                    modifier = Modifier.fillMaxSize(),
+                                    color = MaterialTheme.colorScheme.background
+                                ) {
+                                    HomeScreen(onLogout = {
+                                        googleSignInClient.signOut().addOnCompleteListener {
+                                            // Firebase Auth Listener zaten currentUser'ı güncelleyip
+                                            // animasyonu tetikleyecektir.
+                                        }
+                                    })
+                                }
                             }
                         }
                     }
