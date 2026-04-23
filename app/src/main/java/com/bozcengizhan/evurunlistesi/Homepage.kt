@@ -91,6 +91,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                     modifier = Modifier.size(32.dp)
                 )
             }
+            Spacer(modifier = Modifier.weight(0.4f))
         }
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {
@@ -135,7 +136,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                                 itemName = ""
                             }
                         },
-                        modifier = Modifier.padding(start = 4.dp)
+                        modifier = Modifier.padding(start = 1.dp)
                     ) {
                         Text(stringResource(R.string.home_add_button), fontSize = 24.sp, color = Color.Black)
                     }
