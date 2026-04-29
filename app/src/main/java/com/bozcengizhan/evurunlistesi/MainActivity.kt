@@ -70,19 +70,15 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(modifier = Modifier.padding(innerPadding)) {
-                        // AnimatedContent, currentUser değiştiğinde geçişi otomatik animasyonlu yapar
                         AnimatedContent(
                             targetState = currentUser,
                             transitionSpec = {
-                                // Giriş mi yapıyoruz (null -> user) yoksa çıkış mı (user -> null)?
                                 if (targetState != null) {
-                                    // GİRİŞ: Aşağıdan yukarı süzülerek gel
                                     (slideInVertically(animationSpec = tween(600), initialOffsetY = { it }) +
                                             fadeIn(animationSpec = tween(600)))
                                         .togetherWith(fadeOut(animationSpec = tween(400)))
                                 } else {
-                                    // ÇIKIŞ: Yukarıdan aşağıya süzülerek git
-                                    fadeIn(animationSpec = tween(500)) // Yeni ekran (Login) yavaşça belirsin
+                                    fadeIn(animationSpec = tween(500))
                                         .togetherWith(
                                             slideOutVertically(animationSpec = tween(600), targetOffsetY = { it }) +
                                                     fadeOut(animationSpec = tween(600))
@@ -105,8 +101,6 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     HomeScreen(onLogout = {
                                         googleSignInClient.signOut().addOnCompleteListener {
-                                            // Firebase Auth Listener zaten currentUser'ı güncelleyip
-                                            // animasyonu tetikleyecektir.
                                         }
                                     })
                                 }
