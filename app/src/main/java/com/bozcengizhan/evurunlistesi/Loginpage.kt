@@ -120,7 +120,7 @@ fun LoginScreen(
                             }
                         }
 
-                        Spacer(modifier = Modifier.height(15.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
 
                         Text(
                             text = stringResource(R.string.login_terms),
