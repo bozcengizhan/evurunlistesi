@@ -145,7 +145,7 @@ fun HomeScreen(onLogout: () -> Unit) {
 
             items(itemList) { item ->
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 10.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),
                 ) {
                     Row(
                         modifier = Modifier.background(cardColor, shape = RoundedCornerShape(16.dp)).padding(8.dp),
