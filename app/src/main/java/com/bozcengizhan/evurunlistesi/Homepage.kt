@@ -138,14 +138,14 @@ fun HomeScreen(onLogout: () -> Unit) {
                         },
                         modifier = Modifier.padding(start = 1.dp)
                     ) {
-                        Text(stringResource(R.string.home_add_button), fontSize = 22.sp, color = Color.Black)
+                        Text(stringResource(R.string.home_add_button), fontSize = 24.sp, color = Color.Black)
                     }
                 }
             }
 
             items(itemList) { item ->
                 Card(
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 1.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),
+                    modifier = Modifier.fillMaxWidth().padding(horizontal = 12.dp).padding(vertical = 6.dp).background(Color.White,shape = RoundedCornerShape(16.dp)).shadow(8.dp, RoundedCornerShape(16.dp)),
                 ) {
                     Row(
                         modifier = Modifier.background(cardColor, shape = RoundedCornerShape(16.dp)).padding(8.dp),
