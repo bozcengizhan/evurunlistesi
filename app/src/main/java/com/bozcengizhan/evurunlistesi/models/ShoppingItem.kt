@@ -1,4 +1,4 @@
-package com.bozcengizhan.evurunlistesi
+package com.bozcengizhan.evurunlistesi.models
 
 data class ShoppingItem(
     val id: String = "",

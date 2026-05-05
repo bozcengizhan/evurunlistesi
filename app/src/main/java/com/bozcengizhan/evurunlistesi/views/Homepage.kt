@@ -1,4 +1,4 @@
-package com.bozcengizhan.evurunlistesi
+package com.bozcengizhan.evurunlistesi.views
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Logout
-import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -20,7 +19,6 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.google.firebase.auth.ktx.auth
@@ -28,9 +26,8 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.time.format.TextStyle
-import androidx.compose.ui.res.stringResource
 import com.bozcengizhan.evurunlistesi.R
+import com.bozcengizhan.evurunlistesi.models.ShoppingItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

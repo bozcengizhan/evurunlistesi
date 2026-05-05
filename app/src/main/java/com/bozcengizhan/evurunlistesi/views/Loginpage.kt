@@ -1,4 +1,4 @@
-package com.bozcengizhan.evurunlistesi
+package com.bozcengizhan.evurunlistesi.views
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
