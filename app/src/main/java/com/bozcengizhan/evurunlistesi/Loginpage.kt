@@ -124,7 +124,7 @@ fun LoginScreen(
 
                         Text(
                             text = stringResource(R.string.login_terms),
-                            fontSize = 12.sp,
+                            fontSize = 11.sp,
                             color = Color.Black.copy(alpha = 0.4f),
                             textAlign = TextAlign.Center
                         )

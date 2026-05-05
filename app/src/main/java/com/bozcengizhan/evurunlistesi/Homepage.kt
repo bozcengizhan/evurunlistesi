@@ -106,7 +106,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                         onValueChange = { itemName = it },
                         modifier = Modifier.weight(1f).padding(horizontal = 12.dp),
                         textStyle = LocalTextStyle.current.copy(
-                            fontSize = 22.sp,
+                            fontSize = 21.sp,
                             fontWeight = FontWeight.Medium
                         ),
                         placeholder = { Text(stringResource(R.string.home_add_placeholder), fontSize = 20.sp) },
