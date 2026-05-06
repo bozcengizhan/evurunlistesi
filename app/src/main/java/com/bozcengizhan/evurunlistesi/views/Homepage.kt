@@ -113,7 +113,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                             disabledContainerColor = Color.Transparent,
                             focusedIndicatorColor = Color.Black,
                             unfocusedIndicatorColor = Color.Black,
-                            focusedPlaceholderColor = Color.Black.copy(alpha = 0.6f),
+                            focusedPlaceholderColor = Color.Black.copy(alpha = 0.4f),
                             unfocusedPlaceholderColor = Color.Black.copy(alpha = 0.2f),
                             cursorColor = Color.Black,
                             focusedTextColor = Color.Black.copy(alpha = 2f),

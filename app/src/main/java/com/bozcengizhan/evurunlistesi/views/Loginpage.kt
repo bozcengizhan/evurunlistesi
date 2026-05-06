@@ -94,14 +94,14 @@ fun LoginScreen(
                     border = BorderStroke(1.dp, Color.White)
                 ) {
                     Column(
-                        modifier = Modifier.fillMaxSize().padding(26.dp),
+                        modifier = Modifier.fillMaxSize().padding(24.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
                         Text(
                             text = stringResource(R.string.login_welcome),
                             fontWeight = FontWeight.Bold,
-                            fontSize = 21.sp,
+                            fontSize = 20.sp,
                             color = Color.Black
                         )
                         Spacer(modifier = Modifier.height(24.dp))
