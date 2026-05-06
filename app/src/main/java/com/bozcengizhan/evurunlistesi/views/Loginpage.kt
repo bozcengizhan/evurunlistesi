@@ -101,7 +101,7 @@ fun LoginScreen(
                         Text(
                             text = stringResource(R.string.login_welcome),
                             fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp,
+                            fontSize = 21.sp,
                             color = Color.Black
                         )
                         Spacer(modifier = Modifier.height(24.dp))
