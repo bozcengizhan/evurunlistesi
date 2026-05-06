@@ -94,7 +94,7 @@ fun LoginScreen(
                     border = BorderStroke(1.dp, Color.White)
                 ) {
                     Column(
-                        modifier = Modifier.fillMaxSize().padding(24.dp),
+                        modifier = Modifier.fillMaxSize().padding(26.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
