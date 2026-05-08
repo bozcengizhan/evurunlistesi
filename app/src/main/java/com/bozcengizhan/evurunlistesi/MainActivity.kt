@@ -71,8 +71,8 @@ class MainActivity : ComponentActivity() {
                             targetState = currentUser,
                             transitionSpec = {
                                 if (targetState != null) {
-                                    (slideInVertically(animationSpec = tween(500), initialOffsetY = { it }) +
-                                            fadeIn(animationSpec = tween(500)))
+                                    (slideInVertically(animationSpec = tween(600), initialOffsetY = { it }) +
+                                            fadeIn(animationSpec = tween(600)))
                                         .togetherWith(fadeOut(animationSpec = tween(400)))
                                 } else {
                                     fadeIn(animationSpec = tween(500))

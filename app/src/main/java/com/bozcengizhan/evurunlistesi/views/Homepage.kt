@@ -95,7 +95,7 @@ fun HomeScreen(onLogout: () -> Unit) {
 
             item {
                 Row(
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 7.dp),
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     TextField(
