@@ -77,8 +77,8 @@ class MainActivity : ComponentActivity() {
                                 } else {
                                     fadeIn(animationSpec = tween(500))
                                         .togetherWith(
-                                            slideOutVertically(animationSpec = tween(600), targetOffsetY = { it }) +
-                                                    fadeOut(animationSpec = tween(600))
+                                            slideOutVertically(animationSpec = tween(500), targetOffsetY = { it }) +
+                                                    fadeOut(animationSpec = tween(500))
                                         )
                                 }
                             },
