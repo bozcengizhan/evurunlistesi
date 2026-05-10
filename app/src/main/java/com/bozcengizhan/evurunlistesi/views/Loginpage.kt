@@ -78,7 +78,7 @@ fun LoginScreen(
                     Text(
                         text = stringResource(R.string.login_slogan),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Black.copy(alpha = 0.5f),
+                        color = Color.Black.copy(alpha = 0.6f),
                         fontWeight = FontWeight.Medium
                     )
                 }
