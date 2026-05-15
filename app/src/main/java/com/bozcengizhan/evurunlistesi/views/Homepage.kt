@@ -76,7 +76,7 @@ fun HomeScreen(onLogout: () -> Unit) {
                 text = stringResource(R.string.app_name),
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Black,
-                letterSpacing = 6.sp,
+                letterSpacing = 4.sp,
                 color = Color.White
             )
             Spacer(modifier = Modifier.weight(0.25f))

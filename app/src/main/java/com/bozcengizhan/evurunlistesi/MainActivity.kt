@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
                             transitionSpec = {
                                 if (targetState != null) {
                                     (slideInVertically(animationSpec = tween(600), initialOffsetY = { it }) +
-                                            fadeIn(animationSpec = tween(600)))
+                                            fadeIn(animationSpec = tween(500)))
                                         .togetherWith(fadeOut(animationSpec = tween(400)))
                                 } else {
                                     fadeIn(animationSpec = tween(500))
@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
                                         )
                                 }
                             },
-                            label = "ScreenTransition"
+                            label = "SreenTransition"
                         ) { targetUser ->
                             if (targetUser == null) {
                                 LoginScreen(
