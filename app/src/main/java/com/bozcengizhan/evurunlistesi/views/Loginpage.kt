@@ -55,7 +55,7 @@ fun LoginScreen(
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Card(
                         modifier = Modifier.size(100.dp),
-                        shape = RoundedCornerShape(24.dp),
+                        shape = RoundedCornerShape(23.dp),
                         colors = CardDefaults.cardColors(containerColor = cardColor),
                         border = BorderStroke(3.dp, Color.Black),
                         elevation = CardDefaults.cardElevation(12.dp)
