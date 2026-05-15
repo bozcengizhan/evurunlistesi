@@ -55,7 +55,7 @@ fun LoginScreen(
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Card(
                         modifier = Modifier.size(100.dp),
-                        shape = RoundedCornerShape(23.dp),
+                        shape = RoundedCornerShape(24.dp),
                         colors = CardDefaults.cardColors(containerColor = cardColor),
                         border = BorderStroke(3.dp, Color.Black),
                         elevation = CardDefaults.cardElevation(12.dp)
@@ -65,7 +65,7 @@ fun LoginScreen(
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(22.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
                     Text(
                         text = stringResource(R.string.app_name),

@@ -57,11 +57,11 @@ class MainActivity : ComponentActivity() {
                         auth.signInWithCredential(credential).addOnCompleteListener { taskResult ->
                             if (taskResult.isSuccessful) {
                                 currentUser = auth.currentUser
-                                println("Giris Başarılı: ${auth.currentUser?.displayName}")
+                                println("Giriş Başarılı: ${auth.currentUser?.displayName}")
                             }
                         }
                     } catch (e: Exception) {
-                        println("Giris Hatası: ${e.message}")
+                        println("Giriş Hatası: ${e.message}")
                     }
                 }
 
@@ -72,7 +72,7 @@ class MainActivity : ComponentActivity() {
                             transitionSpec = {
                                 if (targetState != null) {
                                     (slideInVertically(animationSpec = tween(600), initialOffsetY = { it }) +
-                                            fadeIn(animationSpec = tween(500)))
+                                            fadeIn(animationSpec = tween(600)))
                                         .togetherWith(fadeOut(animationSpec = tween(400)))
                                 } else {
                                     fadeIn(animationSpec = tween(500))
@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
                                         )
                                 }
                             },
-                            label = "SreenTransition"
+                            label = "ScreenTransition"
                         ) { targetUser ->
                             if (targetUser == null) {
                                 LoginScreen(
