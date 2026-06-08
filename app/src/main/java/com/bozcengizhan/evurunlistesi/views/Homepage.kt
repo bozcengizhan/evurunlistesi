@@ -41,7 +41,7 @@ fun HomeScreen(onLogout: () -> Unit) {
 
     val isDarkTheme = isSystemInDarkTheme()
 
-    val backgroundColor = if (isDarkTheme) Color(0xFFFFD1D2) else Color(0xFFFFD1D1)
+    val backgroundColor = if (isDarkTheme) Color(0xFFFFD1D1) else Color(0xFFFFD1D1)
     val topbarColor = if (isDarkTheme) Color(0xFFFF9494) else Color(0xFFFF9494)
     val cardColor = if (isDarkTheme) Color.White else Color.White
     val textColor = if (isDarkTheme) Color.Black else Color.Black
@@ -85,10 +85,10 @@ fun HomeScreen(onLogout: () -> Unit) {
                     imageVector = Icons.AutoMirrored.Filled.Logout,
                     contentDescription = stringResource(R.string.home_logout_description),
                     tint = Color.Black,
-                    modifier = Modifier.size(31.dp)
+                    modifier = Modifier.size(32.dp)
                 )
             }
-            Spacer(modifier = Modifier.weight(0.5f))
+            Spacer(modifier = Modifier.weight(0.4f))
         }
 
         LazyColumn(modifier = Modifier.fillMaxSize()) {

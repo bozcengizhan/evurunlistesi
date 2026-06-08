@@ -57,11 +57,11 @@ class MainActivity : ComponentActivity() {
                         auth.signInWithCredential(credential).addOnCompleteListener { taskResult ->
                             if (taskResult.isSuccessful) {
                                 currentUser = auth.currentUser
-                                println("Giris Basarılı: ${auth.currentUser?.displayName}")
+                                println("Giriş Başarılı: ${auth.currentUser?.displayName}")
                             }
                         }
                     } catch (e: Exception) {
-                        println("Giris Hatası: ${e.message}")
+                        println("Giriş Hatası: ${e.message}")
                     }
                 }
 

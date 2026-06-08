@@ -37,7 +37,7 @@ fun LoginScreen(
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
 
-            Canvas(modifier = Modifier.size(200.dp).align(Alignment.TopStart).offset(x = (-100).dp, y = (-50).dp)) {
+            Canvas(modifier = Modifier.size(300.dp).align(Alignment.TopStart).offset(x = (-100).dp, y = (-50).dp)) {
                 drawCircle(color = Color(0xFFFF9494).copy(alpha = 0.4f))
             }
 
@@ -57,7 +57,7 @@ fun LoginScreen(
                         modifier = Modifier.size(100.dp),
                         shape = RoundedCornerShape(24.dp),
                         colors = CardDefaults.cardColors(containerColor = cardColor),
-                        border = BorderStroke(2.dp, Color.Black),
+                        border = BorderStroke(3.dp, Color.Black),
                         elevation = CardDefaults.cardElevation(12.dp)
                     ) {
                         Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
@@ -71,7 +71,7 @@ fun LoginScreen(
                         text = stringResource(R.string.app_name),
                         style = MaterialTheme.typography.displayMedium,
                         fontWeight = FontWeight.Black,
-                        letterSpacing = 5.sp,
+                        letterSpacing = 6.sp,
                         color = Color.Black
                     )
 
@@ -88,7 +88,7 @@ fun LoginScreen(
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(300.dp),
+                        .height(200.dp),
                     shape = RoundedCornerShape(32.dp),
                     colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.5f)),
                     border = BorderStroke(1.dp, Color.White)
