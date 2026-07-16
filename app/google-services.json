@@ -14,6 +14,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "420012590198-50db6q4u7s3q1sjmktl7elcbiidflj5j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bozcengizhan.evurunlistesi",
+            "certificate_hash": "20d66d5a2ce421f2643c9cd566db226ba1e27054"
+          }
+        },
+        {
+          "client_id": "420012590198-o75khtuo0v43q8nbk8l8sjmj0lfa0oif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bozcengizhan.evurunlistesi",
+            "certificate_hash": "873ef723cc091c64914670cee3095d4fee1ee2c3"
+          }
+        },
+        {
           "client_id": "420012590198-q8r51hjhmo08ti14oi8esjl88g1c438d.apps.googleusercontent.com",
           "client_type": 3
         }
